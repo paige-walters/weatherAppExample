@@ -83,17 +83,21 @@ class WeatherService {
                             
                             
                             if self.delegate != nil {
+                                dispatch_async(dispatch_get_main_queue(), {
+                                   
+                                })
                                 
                                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                     self.delegate?.displayForecast(self.hourlyData)
+                                      self.delegate?.setWeather(currentWeather)
                                 })
                          
                             
-                                if self.delegate != nil {
-                                    
-                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        self.delegate?.setWeather(currentWeather)
-                                    })
+//                                if self.delegate != nil {
+//                                    
+//                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                                      
+//                                    })
                     } else {
                         print("error parsing /posts/1")
                     }
@@ -103,4 +107,4 @@ class WeatherService {
                 }
         }
     }
-}
+//}

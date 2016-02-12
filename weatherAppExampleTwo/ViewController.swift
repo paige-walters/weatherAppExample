@@ -12,10 +12,14 @@ import Alamofire
 
 class ViewController: UIViewController, WeatherServiceDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    private let reuseIdentifier = "cell"
+    
     var hourlyStuff = [HourlyForecast]()
     var hours = ["3", "3", "33"]
     
     let weatherService = WeatherService()
+    
+    @IBOutlet weak var collectionOutlet: MyCollectionView!
     
     @IBOutlet weak var cityLabel: UILabel!
     
@@ -78,11 +82,12 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
     
     func displayForecast(hourlyData: [HourlyForecast]) {
         hourlyStuff = hourlyData
-
+        
+         self.collectionOutlet.reloadData()
+        
     }
 
         
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +102,7 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
         // Dispose of any resources that can be recreated.
     }
     
-    
+
     // MARK: UICollectionViewDataSource
     
 
@@ -109,6 +114,7 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+        print(hourlyStuff.count)
         return hourlyStuff.count
     }
     
@@ -125,6 +131,7 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
         cell.theHourLabel.text = self.hourlyStuff[indexPath.row].hourlyHour
         
         cell.setNeedsDisplay()
+       
         
         return cell
     }
@@ -150,6 +157,7 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
                 assert(false, "Unexpected element kind")
             }
     }
+    
     
 //    override func viewWillAppear(animated: Bool) {
 //        MyCollectionView.reloadData()
