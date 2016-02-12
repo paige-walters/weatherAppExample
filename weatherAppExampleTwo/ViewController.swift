@@ -12,7 +12,7 @@ import Alamofire
 
 class ViewController: UIViewController, WeatherServiceDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var hourlyStuff = [String]()
+    var hourlyStuff = [HourlyForecast]()
     var hours = ["3", "3", "33"]
     
     let weatherService = WeatherService()
@@ -39,11 +39,6 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
             print("ok")
             
             let textField = zipAlert.textFields?[0]
-//            print(textField!.text!)
-            
-            // setting the entered text to the city label
-            
-//            self.cityLabel.text = textField!.text!
             
             let zipEntered = textField!.text!
             
@@ -71,6 +66,7 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
     
     // MARK: - Weather Service Delegate
     
+    //    setting the current weather labels
     func setWeather(currentWeather: CurrentWeather) {
         
         self.cityLabel.text = currentWeather.currentCityName
@@ -79,40 +75,13 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
      
     }
     
-    func displayForecast(hourlyData: HourlyForecast) {
-//        print(hourlyData)
-        let hourlyData = [hourlyData]
-        for hour in hourlyData {
-//          print(hour)
-            
-            hourlyStuff.append("\(hour)")
-            
-        }
     
-        
+    func displayForecast(hourlyData: [HourlyForecast]) {
+        hourlyStuff = hourlyData
 
-        for index in 0...hourlyData.count-1 {
-//            print(hourlyData)
-            for hour in hourlyData {
-           let theHour = hourlyData[0].hourlyHour
-                hours.append(theHour)
-                }
-            }
-        
-//        for hour in hourlyData {
-////            print("this is the hour in the hourlyData inside the view controller \(hour)")
-//           
-////            if hour.hourlyDay == hourlyData[0].hourlyDay {
-////                print(hour)
-////            }
-////            if hour.hourlyDate == hourlyData[0].hourlyDate && hour.hourlyHour == hourlyData[0].hourlyHour {
-////                print(hour)
-////            }
-//        }
-        
-    
     }
 
+        
 
 
     override func viewDidLoad() {
@@ -130,17 +99,17 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
     
     
     // MARK: UICollectionViewDataSource
-//    
-//    
-//    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 5
-//    }
-//    
+    
+
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 5
+    }
+ 
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return hours.count
+        return hourlyStuff.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -151,10 +120,15 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
         // Configure the cell
         
       
-            cell.theHourLabel.text = self.hours[indexPath.row]
+//        cell.theHourLabel.text = self.hours[indexPath.row]
+        
+        cell.theHourLabel.text = self.hourlyStuff[indexPath.row].hourlyHour
+        
+        cell.setNeedsDisplay()
         
         return cell
     }
+    
     
  
     func collectionView(collectionView: UICollectionView,
@@ -177,6 +151,9 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
             }
     }
     
+//    override func viewWillAppear(animated: Bool) {
+//        MyCollectionView.reloadData()
+//    }
     
     
     // MARK: UICollectionViewDelegate

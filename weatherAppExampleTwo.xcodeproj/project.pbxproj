@@ -20,6 +20,7 @@
 		C65395401C6D87690096A7A6 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C653953F1C6D87690096A7A6 /* CurrentWeather.swift */; };
 		C65395441C6DCD110096A7A6 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65395431C6DCD110096A7A6 /* CollectionViewCell.swift */; };
 		C65395461C6DD6450096A7A6 /* CollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65395451C6DD6450096A7A6 /* CollectionReusableView.swift */; };
+		C65395481C6E496B0096A7A6 /* MyCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65395471C6E496B0096A7A6 /* MyCollectionView.swift */; };
 		C6D5C2D71C6C19E900B566DE /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D5C2D61C6C19E900B566DE /* SwiftyJSON.swift */; };
 		C6D5C3091C6C1BB200B566DE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6D5C2FC1C6C1B8500B566DE /* Alamofire.framework */; };
 		C6D5C30A1C6C1BB200B566DE /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6D5C2FC1C6C1B8500B566DE /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -134,6 +135,7 @@
 		C653953F1C6D87690096A7A6 /* CurrentWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		C65395431C6DCD110096A7A6 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		C65395451C6DD6450096A7A6 /* CollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionReusableView.swift; sourceTree = "<group>"; };
+		C65395471C6E496B0096A7A6 /* MyCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionView.swift; sourceTree = "<group>"; };
 		C6D5C2D61C6C19E900B566DE /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C6D5C2DA1C6C1B6000B566DE /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "weatherAppExampleTwo/Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,6 +208,7 @@
 				C653953D1C6D85C50096A7A6 /* HourlyForecast.swift */,
 				C65395451C6DD6450096A7A6 /* CollectionReusableView.swift */,
 				C65395431C6DCD110096A7A6 /* CollectionViewCell.swift */,
+				C65395471C6E496B0096A7A6 /* MyCollectionView.swift */,
 				C63FB34F1C5DD362001729D3 /* Main.storyboard */,
 				C63FB3521C5DD362001729D3 /* Assets.xcassets */,
 				C63FB3541C5DD362001729D3 /* LaunchScreen.storyboard */,
@@ -503,6 +506,7 @@
 				C63FB34E1C5DD362001729D3 /* ViewController.swift in Sources */,
 				C65395441C6DCD110096A7A6 /* CollectionViewCell.swift in Sources */,
 				C653953E1C6D85C50096A7A6 /* HourlyForecast.swift in Sources */,
+				C65395481C6E496B0096A7A6 /* MyCollectionView.swift in Sources */,
 				C63FB34C1C5DD362001729D3 /* AppDelegate.swift in Sources */,
 				C65395401C6D87690096A7A6 /* CurrentWeather.swift in Sources */,
 				C6D5C2D71C6C19E900B566DE /* SwiftyJSON.swift in Sources */,

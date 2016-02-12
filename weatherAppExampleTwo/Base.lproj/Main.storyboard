@@ -43,26 +43,26 @@
                                     <action selector="enterZipButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4b8-N4-zzB"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FkG-to-Wqp">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FkG-to-Wqp" customClass="MyCollectionView" customModule="weatherAppExampleTwo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="254" width="600" height="346"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eYP-wj-WPk">
-                                    <size key="itemSize" width="62" height="62"/>
+                                    <size key="itemSize" width="156" height="155"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="p6q-4L-YG0" customClass="CollectionViewCell" customModule="weatherAppExampleTwo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="62" height="62"/>
+                                        <rect key="frame" x="0.0" y="50" width="156" height="155"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="62" height="62"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="156" height="155"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2z-LH-x54">
-                                                    <rect key="frame" x="10" y="21" width="42" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inside Cell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2z-LH-x54">
+                                                    <rect key="frame" x="16.5" y="63" width="110.5" height="29"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <color key="textColor" red="0.41470603734548506" green="0.36598603414148112" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -71,7 +71,7 @@
                                         </view>
                                         <color key="backgroundColor" red="0.33733209040000001" green="0.053770246559999998" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="X2z-LH-x54" firstAttribute="centerX" secondItem="p6q-4L-YG0" secondAttribute="centerX" id="5ny-vZ-VbR"/>
+                                            <constraint firstItem="X2z-LH-x54" firstAttribute="centerX" secondItem="p6q-4L-YG0" secondAttribute="centerX" constant="-6.5" id="5ny-vZ-VbR"/>
                                             <constraint firstItem="X2z-LH-x54" firstAttribute="centerY" secondItem="p6q-4L-YG0" secondAttribute="centerY" id="BU8-32-UYH"/>
                                         </constraints>
                                         <connections>
@@ -83,7 +83,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfa-lL-zbN">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfa-lL-zbN">
                                             <rect key="frame" x="8" y="14" width="584" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.33733209040000001" green="0.053770246559999998" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>

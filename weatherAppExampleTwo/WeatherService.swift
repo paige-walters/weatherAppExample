@@ -13,7 +13,7 @@ import Alamofire
 
 protocol WeatherServiceDelegate {
     func setWeather(currentWeather: CurrentWeather)
-    func displayForecast(hourlyData: HourlyForecast)
+    func displayForecast(hourlyData: [HourlyForecast])
 }
 
 class WeatherService {
@@ -24,7 +24,7 @@ class WeatherService {
     let myAPI = "d5d791369c744a64"
     
     // Array for all hourly info that is structured now
-    var hourlyData = Array<HourlyForecast>()
+    var hourlyData = [HourlyForecast]()
     
     
     func getWeatherForZip(zip: String){
@@ -79,24 +79,28 @@ class WeatherService {
                         let hourlyForecast = HourlyForecast(tempC: tempC, tempF: tempF, hourlyCondition: hourlyCondition, hourlyHour: hourlyHour, hourlyDate: hourlyDate, hourlyTime: hourlyTime, hourlyDay: hourlyDay, hourlyIcon: hourlyIcon)
                                 
                                 self.hourlyData.append(hourlyForecast)
-                                
-                                if self.delegate != nil {
-                                    self.delegate?.displayForecast(hourlyForecast)
-                                }
-                        
-                            
                             }
+                            
                             
                             if self.delegate != nil {
-                                self.delegate?.setWeather(currentWeather)
+                                
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    self.delegate?.displayForecast(self.hourlyData)
+                                })
+                         
+                            
+                                if self.delegate != nil {
                                     
-                            }
+                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                        self.delegate?.setWeather(currentWeather)
+                                    })
                     } else {
                         print("error parsing /posts/1")
                     }
                 }
             }
         
+                }
         }
-        
     }
+}
