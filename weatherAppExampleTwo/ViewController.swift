@@ -215,6 +215,15 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
                     withReuseIdentifier: "header",
                     forIndexPath: indexPath)
                     as! CollectionReusableView
+                // setting the header to the human readable day of the week
+                // still need to implement logic for today or tomorrow
+                
+                if dailyInfo.count == 0 {
+                    headerView.headerLabel.text = "Day"
+                } else {
+                headerView.headerLabel.text = self.dailyInfo[indexPath.section][indexPath.row].hourlyDay
+                }
+                
                 return headerView
             default:
                 //4
