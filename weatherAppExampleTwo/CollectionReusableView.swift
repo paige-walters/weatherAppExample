@@ -13,6 +13,6 @@ class CollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var headerLabel: UILabel!
     
     class var reuseIdentifier: String {
-        return "header"
+        return "today"
     }
 }

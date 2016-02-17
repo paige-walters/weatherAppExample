@@ -43,39 +43,64 @@
                                     <action selector="enterZipButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4b8-N4-zzB"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FkG-to-Wqp" customClass="MyCollectionView" customModule="weatherAppExampleTwo" customModuleProvider="target">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FkG-to-Wqp" customClass="MyCollectionView" customModule="weatherAppExampleTwo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="254" width="600" height="346"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eYP-wj-WPk">
-                                    <size key="itemSize" width="120" height="80"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="eYP-wj-WPk">
+                                    <size key="itemSize" width="62" height="80"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="10" maxX="5" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="p6q-4L-YG0" customClass="CollectionViewCell" customModule="weatherAppExampleTwo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="120" height="80"/>
+                                        <rect key="frame" x="5" y="60" width="62" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="62" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inside Cell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2z-LH-x54">
-                                                    <rect key="frame" x="1" y="25" width="110.5" height="29"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                    <color key="textColor" red="0.41470603734548506" green="0.36598603414148112" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hour" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2z-LH-x54">
+                                                    <rect key="frame" x="15" y="0.0" width="32" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp˚" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2w-al-22S">
+                                                    <rect key="frame" x="9" y="63" width="44" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud_small.png" translatesAutoresizingMaskIntoConstraints="NO" id="oPr-TQ-XPE">
+                                                    <rect key="frame" x="10" y="20" width="43" height="39"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="0.33733209040000001" green="0.053770246559999998" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="X2z-LH-x54" firstAttribute="centerX" secondItem="p6q-4L-YG0" secondAttribute="centerX" constant="-3.75" id="5ny-vZ-VbR"/>
-                                            <constraint firstItem="X2z-LH-x54" firstAttribute="centerY" secondItem="p6q-4L-YG0" secondAttribute="centerY" constant="-0.5" id="BU8-32-UYH"/>
+                                            <constraint firstItem="X2z-LH-x54" firstAttribute="centerX" secondItem="p6q-4L-YG0" secondAttribute="centerX" constant="0.5" id="5ny-vZ-VbR"/>
+                                            <constraint firstItem="X2z-LH-x54" firstAttribute="centerY" secondItem="p6q-4L-YG0" secondAttribute="centerY" constant="-31.5" id="BU8-32-UYH"/>
+                                            <constraint firstItem="m2w-al-22S" firstAttribute="top" secondItem="X2z-LH-x54" secondAttribute="bottom" constant="46" id="O26-7v-0SV"/>
+                                            <constraint firstItem="m2w-al-22S" firstAttribute="leading" secondItem="p6q-4L-YG0" secondAttribute="leadingMargin" constant="1" id="QB4-Qw-spx"/>
+                                            <constraint firstItem="m2w-al-22S" firstAttribute="top" secondItem="oPr-TQ-XPE" secondAttribute="bottom" constant="4" id="TIC-Tj-ldP"/>
+                                            <constraint firstItem="oPr-TQ-XPE" firstAttribute="top" secondItem="X2z-LH-x54" secondAttribute="bottom" constant="3" id="Tan-wl-SHw"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="m2w-al-22S" secondAttribute="bottom" constant="-8" id="a9m-YR-iw4"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="oPr-TQ-XPE" secondAttribute="trailing" constant="31" id="bqr-XU-dT9"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="oPr-TQ-XPE" secondAttribute="trailing" constant="1" id="cYc-dM-tEl"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="m2w-al-22S" secondAttribute="trailing" constant="30" id="v7V-1y-xi9"/>
+                                            <constraint firstItem="oPr-TQ-XPE" firstAttribute="leading" secondItem="p6q-4L-YG0" secondAttribute="leadingMargin" constant="2" id="vZc-3d-zlL"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="bqr-XU-dT9"/>
+                                                <exclude reference="v7V-1y-xi9"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
+                                            <outlet property="hourlyIcon" destination="oPr-TQ-XPE" id="MJg-Bi-xy2"/>
                                             <outlet property="theHourLabel" destination="X2z-LH-x54" id="Rq0-0d-CMn"/>
+                                            <outlet property="theTempLabel" destination="m2w-al-22S" id="McC-JC-Cpl"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -109,6 +134,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.88924536320000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="FkG-to-Wqp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="234" id="1fM-T6-E54"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FkG-to-Wqp" secondAttribute="trailing" constant="-20" id="55L-FP-YG2"/>
                             <constraint firstItem="uvR-Mp-TCr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="5z7-FO-99S"/>
                             <constraint firstItem="Svo-Vv-MLs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="Afa-Xd-a8O"/>
                             <constraint firstItem="uvR-Mp-TCr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="CWl-jP-5eL"/>
@@ -118,9 +145,11 @@
                             <constraint firstItem="Svo-Vv-MLs" firstAttribute="width" secondItem="uvR-Mp-TCr" secondAttribute="width" id="RMO-Ki-ox5"/>
                             <constraint firstItem="Svo-Vv-MLs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VdL-0q-rKS"/>
                             <constraint firstItem="nOP-09-iTV" firstAttribute="width" secondItem="uvR-Mp-TCr" secondAttribute="width" id="WiL-36-N2P"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FkG-to-Wqp" secondAttribute="bottom" id="caO-a9-PHO"/>
                             <constraint firstAttribute="trailing" secondItem="uvR-Mp-TCr" secondAttribute="trailing" constant="20" id="dT0-aC-39j"/>
                             <constraint firstItem="Svo-Vv-MLs" firstAttribute="top" secondItem="uvR-Mp-TCr" secondAttribute="bottom" constant="33" id="dfq-gi-gPa"/>
                             <constraint firstItem="RRY-13-oRU" firstAttribute="top" secondItem="nOP-09-iTV" secondAttribute="bottom" constant="8" id="gAi-Zy-aRj"/>
+                            <constraint firstItem="FkG-to-Wqp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="gjL-Hi-Iez"/>
                             <constraint firstAttribute="leadingMargin" secondItem="RRY-13-oRU" secondAttribute="leading" id="k7g-wl-9va"/>
                             <constraint firstItem="Svo-Vv-MLs" firstAttribute="height" secondItem="uvR-Mp-TCr" secondAttribute="height" id="pFN-8J-bDc"/>
                             <constraint firstItem="nOP-09-iTV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="qZd-QT-GIx"/>
@@ -142,4 +171,7 @@
             <point key="canvasLocation" x="313" y="387"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cloud_small.png" width="300" height="197"/>
+    </resources>
 </document>

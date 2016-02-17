@@ -67,7 +67,7 @@ class WeatherService {
                                 let tempC = hour["temp"]!!["metric"]! as! String
                                 let tempF = hour["temp"]!!["english"]! as! String
                                 let hourlyCondition = hour["condition"]! as! String
-                                let hourlyDate = hour["FCTTIME"]!!["pretty"]! as! String
+                                let hourlyDate = hour["FCTTIME"]!!["mday"]! as! String
                                 let hourlyHour = hour["FCTTIME"]!!["hour"]! as! String
                                 let hourlyTime = hour["FCTTIME"]!!["civil"]! as! String
                                 let hourlyDay = hour["FCTTIME"]!!["weekday_name"]! as! String

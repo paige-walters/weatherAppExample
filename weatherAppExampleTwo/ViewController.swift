@@ -15,7 +15,16 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
     private let reuseIdentifier = "cell"
     
     var hourlyStuff = [HourlyForecast]()
-    var hours = ["3", "3", "33"]
+    var dailyInfo = [[HourlyForecast]]()
+    
+    var firstDay = [HourlyForecast]()
+    var secondDay = [HourlyForecast]()
+    var thirdDay = [HourlyForecast]()
+    var fourthDay = [HourlyForecast]()
+    var fithDay = [HourlyForecast]()
+    var sixthDay = [HourlyForecast]()
+    var seventhDay = [HourlyForecast]()
+  
     
     let weatherService = WeatherService()
     
@@ -75,14 +84,56 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
         
         self.cityLabel.text = currentWeather.currentCityName
         self.currentConditionLabel.text = currentWeather.currentCondition
-        self.currentTempLabel.text = ("\(currentWeather.currentTemp)")
+        self.currentTempLabel.text = ("\(currentWeather.currentTemp)˚")
      
     }
     
     
     func displayForecast(hourlyData: [HourlyForecast]) {
         hourlyStuff = hourlyData
+        let convertHourToInt = hourlyStuff[0].hourlyDate
+        let hourItt = Int(convertHourToInt)!
+//        for hour in hourlyStuff[0...7] {
+//            print("This should only have 7 things \(hour)")
+//        }
+//        
+        for hour in hourlyStuff {
+//            let hourlyHour = hour.hourlyHour
+//            let numberHour = Int(hourlyHour)
+//            
+            if hour.hourlyDay == hourlyStuff[0].hourlyDay && hour.hourlyDate == convertHourToInt {
+                firstDay.append(hour)
+               
+            } else if Int(hour.hourlyDate) == hourItt + 1  {
+                secondDay.append(hour)
+               
+            } else if Int(hour.hourlyDate) == hourItt + 2 {
+                thirdDay.append(hour)
+                
+            } else if Int(hour.hourlyDate) == hourItt + 3 {
+                fourthDay.append(hour)
+            } else if Int(hour.hourlyDate) == hourItt + 4 {
+                fithDay.append(hour)
+            } else if Int(hour.hourlyDate) == hourItt + 5 {
+                sixthDay.append(hour)
+            } else if Int(hour.hourlyDate) == hourItt + 6 {
+                seventhDay.append(hour)
+            }
+            else {
+//                print("Else statment in the hourly Stuff")
+            }
+        }
         
+        dailyInfo.append(firstDay)
+        dailyInfo.append(secondDay)
+        dailyInfo.append(thirdDay)
+        dailyInfo.append(fourthDay)
+        dailyInfo.append(fithDay)
+        dailyInfo.append(sixthDay)
+        dailyInfo.append(seventhDay)
+        
+//        print("****vthis is the daily info \(dailyInfo[0])")
+   
          self.collectionOutlet.reloadData()
         
     }
@@ -107,15 +158,19 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
     
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 5
+        return 7
     }
  
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        print(hourlyStuff.count)
-        return hourlyStuff.count
+//        print(hourlyStuff.count)
+        if hourlyStuff.count >= 8 {
+            return(8)
+        } else {
+            return hourlyStuff.count
+        }
+        
+        
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -124,11 +179,20 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
         
         
         // Configure the cell
+        // set the cell to have the proper hour icon and temp
         
-      
-//        cell.theHourLabel.text = self.hours[indexPath.row]
+//        cell.theHourLabel.text = self.hourlyStuff[indexPath.row].hourlyTime
+//        cell.theTempLabel.text = self.hourlyStuff[indexPath.row].tempF + "˚"
+  
+//        cell.theHourLabel.text = self.firstDay[indexPath.row].hourlyTime
+//        cell.theTempLabel.text = self.firstDay[indexPath.row].tempF + "˚"
+    
+        cell.theHourLabel.text = self.dailyInfo[indexPath.section][indexPath.row].hourlyTime
+        cell.theTempLabel.text = self.dailyInfo[indexPath.section][indexPath.row].tempF + "˚"
         
-        cell.theHourLabel.text = self.hourlyStuff[indexPath.row].hourlyHour
+        print("*********", self.dailyInfo[indexPath.section][indexPath.row])
+
+        
         
         cell.setNeedsDisplay()
        

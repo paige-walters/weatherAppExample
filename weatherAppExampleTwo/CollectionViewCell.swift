@@ -11,4 +11,9 @@ import UIKit
 class CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var theHourLabel: UILabel!
+    
+    @IBOutlet weak var theTempLabel: UILabel!
+    
+    @IBOutlet weak var hourlyIcon: UIImageView!
+    
 }

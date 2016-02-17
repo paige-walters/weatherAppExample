@@ -24,6 +24,9 @@
 		C6D5C2D71C6C19E900B566DE /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D5C2D61C6C19E900B566DE /* SwiftyJSON.swift */; };
 		C6D5C3091C6C1BB200B566DE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6D5C2FC1C6C1B8500B566DE /* Alamofire.framework */; };
 		C6D5C30A1C6C1BB200B566DE /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6D5C2FC1C6C1B8500B566DE /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C6D7B2E01C70E51A00D54F8B /* cloud_small.png in Resources */ = {isa = PBXBuildFile; fileRef = C6D7B2DD1C70E51A00D54F8B /* cloud_small.png */; };
+		C6D7B2E11C70E51A00D54F8B /* cloud_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6D7B2DE1C70E51A00D54F8B /* cloud_small@2x.png */; };
+		C6D7B2E21C70E51A00D54F8B /* cloud_small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6D7B2DF1C70E51A00D54F8B /* cloud_small@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +141,9 @@
 		C65395471C6E496B0096A7A6 /* MyCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionView.swift; sourceTree = "<group>"; };
 		C6D5C2D61C6C19E900B566DE /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C6D5C2DA1C6C1B6000B566DE /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "weatherAppExampleTwo/Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
+		C6D7B2DD1C70E51A00D54F8B /* cloud_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cloud_small.png; path = Assets.xcassets/cloud_small.imageset/cloud_small.png; sourceTree = "<group>"; };
+		C6D7B2DE1C70E51A00D54F8B /* cloud_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloud_small@2x.png"; path = "Assets.xcassets/cloud_small.imageset/cloud_small@2x.png"; sourceTree = "<group>"; };
+		C6D7B2DF1C70E51A00D54F8B /* cloud_small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloud_small@3x.png"; path = "Assets.xcassets/cloud_small.imageset/cloud_small@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +217,9 @@
 				C65395471C6E496B0096A7A6 /* MyCollectionView.swift */,
 				C63FB34F1C5DD362001729D3 /* Main.storyboard */,
 				C63FB3521C5DD362001729D3 /* Assets.xcassets */,
+				C6D7B2DD1C70E51A00D54F8B /* cloud_small.png */,
+				C6D7B2DE1C70E51A00D54F8B /* cloud_small@2x.png */,
+				C6D7B2DF1C70E51A00D54F8B /* cloud_small@3x.png */,
 				C63FB3541C5DD362001729D3 /* LaunchScreen.storyboard */,
 				C63FB3571C5DD362001729D3 /* Info.plist */,
 				C6D5C2D61C6C19E900B566DE /* SwiftyJSON.swift */,
@@ -427,6 +436,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C63FB3561C5DD362001729D3 /* LaunchScreen.storyboard in Resources */,
+				C6D7B2E11C70E51A00D54F8B /* cloud_small@2x.png in Resources */,
+				C6D7B2E01C70E51A00D54F8B /* cloud_small.png in Resources */,
+				C6D7B2E21C70E51A00D54F8B /* cloud_small@3x.png in Resources */,
 				C63FB3531C5DD362001729D3 /* Assets.xcassets in Resources */,
 				C63FB3511C5DD362001729D3 /* Main.storyboard in Resources */,
 			);
