@@ -205,28 +205,33 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
     func collectionView(collectionView: UICollectionView,
         viewForSupplementaryElementOfKind kind: String,
         atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-            //1
+            
             switch kind {
-                //2
+                
             case UICollectionElementKindSectionHeader:
-                //3
+                
                 let headerView =
                 collectionView.dequeueReusableSupplementaryViewOfKind(kind,
                     withReuseIdentifier: "header",
                     forIndexPath: indexPath)
                     as! CollectionReusableView
+                
                 // setting the header to the human readable day of the week
                 // still need to implement logic for today or tomorrow
                 
                 if dailyInfo.count == 0 {
                     headerView.headerLabel.text = "Day"
+                } else if self.dailyInfo[indexPath.section][indexPath.row].hourlyDate == firstDay[0].hourlyDate {
+                     headerView.headerLabel.text = "Today"
+                } else if self.dailyInfo[indexPath.section][indexPath.row].hourlyDate == secondDay[0].hourlyDate {
+                    headerView.headerLabel.text = "Tomorrow"
                 } else {
                 headerView.headerLabel.text = self.dailyInfo[indexPath.section][indexPath.row].hourlyDay
                 }
                 
                 return headerView
+                
             default:
-                //4
                 assert(false, "Unexpected element kind")
             }
     }
