@@ -12,6 +12,9 @@ import Alamofire
 
 class ViewController: UIViewController, WeatherServiceDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    let warmColor = UIColor(0xFF9800)
+    let coolColor = UIColor(0x03A9F4)
+    
     private let reuseIdentifier = "cell"
     
     var hourlyStuff = [HourlyForecast]()
@@ -25,8 +28,11 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
     var sixthDay = [HourlyForecast]()
     var seventhDay = [HourlyForecast]()
   
+   
     
     let weatherService = WeatherService()
+    
+    @IBOutlet var myView: UIView!
     
     @IBOutlet weak var collectionOutlet: MyCollectionView!
     
@@ -77,14 +83,22 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
         
     }
     
+    
+    
     // MARK: - Weather Service Delegate
     
     //    setting the current weather labels
     func setWeather(currentWeather: CurrentWeather) {
-        
+      
         self.cityLabel.text = currentWeather.currentCityName
         self.currentConditionLabel.text = currentWeather.currentCondition
         self.currentTempLabel.text = ("\(Int(currentWeather.currentTemp))˚")
+    
+       if currentWeather.currentTemp < 60 {
+            self.myView.backgroundColor = coolColor
+        } else {
+            self.myView.backgroundColor = warmColor
+        }
      
     }
     
@@ -93,6 +107,9 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
         hourlyStuff = hourlyData
         let convertHourToInt = hourlyStuff[0].hourlyDate
         let hourItt = Int(convertHourToInt)!
+  
+        
+   
 //        for hour in hourlyStuff[0...7] {
 //            print("This should only have 7 things \(hour)")
 //        }
@@ -131,6 +148,28 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
         dailyInfo.append(fithDay)
         dailyInfo.append(sixthDay)
         dailyInfo.append(seventhDay)
+        
+        var maxTemp = firstDay[0].tempF
+        var minTemp = firstDay[0].tempF
+        for temp in firstDay {
+            if maxTemp < temp.tempF {
+                maxTemp = temp.tempF
+            }
+        }
+        for temp in firstDay {
+            if minTemp > temp.tempF {
+                minTemp = temp.tempF
+            }
+        }
+            print(firstDay)
+            print("This is min Temp \(minTemp)")
+             print("This is max Temp \(maxTemp)")
+    
+//        let maxTemp = maxElement(firstDay.map{$0.tempF})
+        
+//        print(maxTemp)
+        
+//        let maxTemp = maxElement()
         
 //        print("****vthis is the daily info \(dailyInfo[0])")
    
@@ -235,9 +274,7 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
         print(stringIconUrl)
         
         cell.hourlyIcon.image = UIImage(data: NSData(contentsOfURL: NSURL(string: stringIconUrl)!)!)
-        
-        print(cell.hourlyIcon)
-        print(cell)
+
         
         
         cell.setNeedsDisplay()

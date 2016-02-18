@@ -13,4 +13,6 @@ class CollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var headerLabel: UILabel!
     
 
+    @IBOutlet weak var topBar: UIView!
+    @IBOutlet weak var bottomBar: UIView!
 }

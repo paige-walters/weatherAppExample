@@ -81,7 +81,7 @@ class WeatherService {
                                 self.hourlyData.append(hourlyForecast)
                             }
                             
-                            print(self.hourlyData)
+//                            print(self.hourlyData)
                             
                             if self.delegate != nil {
                                 dispatch_async(dispatch_get_main_queue(), {
