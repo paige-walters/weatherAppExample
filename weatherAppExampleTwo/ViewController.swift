@@ -84,7 +84,7 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
         
         self.cityLabel.text = currentWeather.currentCityName
         self.currentConditionLabel.text = currentWeather.currentCondition
-        self.currentTempLabel.text = ("\(currentWeather.currentTemp)˚")
+        self.currentTempLabel.text = ("\(Int(currentWeather.currentTemp))˚")
      
     }
     
@@ -163,13 +163,35 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
  
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        print(hourlyStuff.count)
-        if hourlyStuff.count >= 8 {
+        if section == 0 {
+        return firstDay.count
+        } else if hourlyStuff.count >= 8 {
             return(8)
         } else {
             return hourlyStuff.count
         }
         
+//        self.dailyInfo[section].count
+        
+//        print(hourlyStuff.count)
+//         var dayNumber = 0
+//        for day in dailyInfo {
+//           print(day)
+//        if day.count < 8 {
+//            dayNumber = 8
+//            return dayNumber
+//        } else if day.count == 0 {
+//            dayNumber = 0
+//           return dayNumber
+//        } else {
+//            dayNumber = day.count
+//            return dayNumber
+//        }
+//  
+//    }
+//        return dayNumber
+//    }
+//   
         
     }
     
@@ -186,11 +208,16 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
   
 //        cell.theHourLabel.text = self.firstDay[indexPath.row].hourlyTime
 //        cell.theTempLabel.text = self.firstDay[indexPath.row].tempF + "˚"
-    
-        cell.theHourLabel.text = self.dailyInfo[indexPath.section][indexPath.row].hourlyTime
-        cell.theTempLabel.text = self.dailyInfo[indexPath.section][indexPath.row].tempF + "˚"
+//        print("this is the \(self.dailyInfo[indexPath.section][indexPath.row].hourlyTime)")
         
-        print("*********", self.dailyInfo[indexPath.section][indexPath.row])
+            cell.theHourLabel.text = self.dailyInfo[indexPath.section][indexPath.row].hourlyTime
+            cell.theTempLabel.text = self.dailyInfo[indexPath.section][indexPath.row].tempF + "˚"
+
+    
+        
+        
+//        cell.hourlyIcon.image = UIImage(named: self.dailyInfo[indexPath.section][indexPath.row].hourlyIcon)
+        
 
         
         
