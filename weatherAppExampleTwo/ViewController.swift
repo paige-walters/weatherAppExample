@@ -147,6 +147,13 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
         
         
     }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -212,13 +219,15 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
         
             cell.theHourLabel.text = self.dailyInfo[indexPath.section][indexPath.row].hourlyTime
             cell.theTempLabel.text = self.dailyInfo[indexPath.section][indexPath.row].tempF + "˚"
-
     
+//        .nrd_weatherIconURL()!
         
+      let stringIconUrl = self.dailyInfo[indexPath.section][indexPath.row].hourlyIcon
+        print(stringIconUrl)
+        cell.hourlyIcon.image = UIImage(data: NSData(contentsOfURL: NSURL(string: stringIconUrl)!)!)
         
-//        cell.hourlyIcon.image = UIImage(named: self.dailyInfo[indexPath.section][indexPath.row].hourlyIcon)
-        
-
+        print(cell.hourlyIcon)
+        print(cell)
         
         
         cell.setNeedsDisplay()
