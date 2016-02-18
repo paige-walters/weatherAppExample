@@ -170,7 +170,7 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
  
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 0  && firstDay.count < 8 {
         return firstDay.count
         } else if hourlyStuff.count >= 8 {
             return(8)
@@ -220,10 +220,20 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
             cell.theHourLabel.text = self.dailyInfo[indexPath.section][indexPath.row].hourlyTime
             cell.theTempLabel.text = self.dailyInfo[indexPath.section][indexPath.row].tempF + "˚"
     
-//        .nrd_weatherIconURL()!
+
+        let iconString = dailyInfo[indexPath.section][indexPath.row].hourlyIcon
+        let iconSubstring = iconString.componentsSeparatedByString("/k/")
+        let iconStringDismantled = iconSubstring[1].componentsSeparatedByString(".gif")
+        let iconStringUsing = iconStringDismantled[0]
+//        let iconSubstring = iconString.characters.split{ $0 == "k"}.map(String.init)
+    
         
-      let stringIconUrl = self.dailyInfo[indexPath.section][indexPath.row].hourlyIcon
+//        let iconSubstring = iconString.substringWithRange(Range<String.Index>(start: iconString.startIndex.advancedBy(31), end: iconString.endIndex.advancedBy(-4)))
+//        print("this is the substring \(iconSubstring)")
+
+      let stringIconUrl = ("\(iconStringUsing.nrd_weatherIconURL()!)")
         print(stringIconUrl)
+        
         cell.hourlyIcon.image = UIImage(data: NSData(contentsOfURL: NSURL(string: stringIconUrl)!)!)
         
         print(cell.hourlyIcon)
