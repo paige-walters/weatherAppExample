@@ -12,15 +12,18 @@ struct HourlyForecast {
     
     let tempC: String
     let tempF: String
-    let hourlyCondtion: String
+    var hourlyCondtion: String
     let hourlyHour: String
     let hourlyDate: String
     let hourlyTime: String
     let hourlyDay: String
     let hourlyIcon: String
+    var hourlyHigh: Bool = false
+    var hourlyLow: Bool = false
+    var firstOccurence: Bool = false
 
     
-    init(tempC: String, tempF: String, hourlyCondition: String, hourlyHour: String, hourlyDate: String, hourlyTime: String, hourlyDay: String, hourlyIcon: String) {
+    init(tempC: String, tempF: String, hourlyCondition: String, hourlyHour: String, hourlyDate: String, hourlyTime: String, hourlyDay: String, hourlyIcon: String, hourlyHigh: Bool, hourlyLow: Bool, firstOccurence: Bool) {
     
     self.tempC = tempC
     self.tempF = tempF
@@ -30,6 +33,9 @@ struct HourlyForecast {
     self.hourlyTime = hourlyTime
     self.hourlyDay = hourlyDay
     self.hourlyIcon = hourlyIcon
+    self.hourlyHigh = hourlyHigh
+    self.hourlyLow = hourlyLow
+    self.firstOccurence = firstOccurence
         
     }
 }

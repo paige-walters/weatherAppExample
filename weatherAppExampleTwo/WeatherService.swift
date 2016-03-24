@@ -76,7 +76,7 @@ class WeatherService {
 //                            print("This is \(tempC!) \(tempF!) \(hourlyCondition!) \(hourlyDate!) \(hourlyHour!) \(hourlyTime!) \(hourlyDay!) \(hourlyIcon!)")
                                 
                     // bundling up the hours and putting the structs into an array
-                        let hourlyForecast = HourlyForecast(tempC: tempC, tempF: tempF, hourlyCondition: hourlyCondition, hourlyHour: hourlyHour, hourlyDate: hourlyDate, hourlyTime: hourlyTime, hourlyDay: hourlyDay, hourlyIcon: hourlyIcon)
+                        let hourlyForecast = HourlyForecast(tempC: tempC, tempF: tempF, hourlyCondition: hourlyCondition, hourlyHour: hourlyHour, hourlyDate: hourlyDate, hourlyTime: hourlyTime, hourlyDay: hourlyDay, hourlyIcon: hourlyIcon, hourlyHigh: false, hourlyLow: false, firstOccurence: false)
                                 
                                 self.hourlyData.append(hourlyForecast)
                             }

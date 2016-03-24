@@ -42,7 +42,7 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
     
     @IBOutlet weak var currentConditionLabel: UILabel!
     
-    @IBAction func enterZipButton(sender: UIButton) {
+    @IBAction func enterZipButton(sender: AnyObject) {
         openZipAlert()
     }
     
@@ -78,8 +78,12 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
             textField.placeholder = "Zip Code"
         }
         
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.presentViewController(zipAlert, animated: true, completion: nil)
+        })
         // present alert controller
-        self.presentViewController(zipAlert, animated: true, completion: nil)
+//        self.presentViewController(zipAlert, animated: true, completion: nil)
         
     }
     
@@ -141,29 +145,94 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
             }
         }
         
-        dailyInfo.append(firstDay)
-        dailyInfo.append(secondDay)
-        dailyInfo.append(thirdDay)
-        dailyInfo.append(fourthDay)
-        dailyInfo.append(fithDay)
-        dailyInfo.append(sixthDay)
-        dailyInfo.append(seventhDay)
         
-        var maxTemp = firstDay[0].tempF
-        var minTemp = firstDay[0].tempF
+        func appendInfo() {
+            
+            dailyInfo.append(firstDay)
+            dailyInfo.append(secondDay)
+            dailyInfo.append(thirdDay)
+            dailyInfo.append(fourthDay)
+            dailyInfo.append(fithDay)
+            dailyInfo.append(sixthDay)
+            dailyInfo.append(seventhDay)
+            
+        }
+        
+//        var maxTemp = firstDay[0].tempF
+//        var minTemp = firstDay[0].tempF
+//        
+//        func findingHighsAndLows () {
+//        for var temp in firstDay {
+//            if maxTemp < temp.tempF {
+//                maxTemp = temp.tempF
+//                if maxTemp == temp.tempF {
+//                print("this is changing the minTemp to highlighted")
+//                temp.hourlyHighorLow = true
+//                }
+//                print("This is highlighted for max \(temp.hourlyHighorLow)")
+//            }
+//            
+//        }
+//        for var temp in firstDay {
+//            if minTemp > temp.tempF {
+//                minTemp = temp.tempF
+//                if minTemp == temp.tempF {
+//                print("this is changing the minTemp to highlighted")
+//                temp.hourlyHighorLow = true
+//                }
+//                print("This is highlighted for min \(temp.hourlyHighorLow)")
+//            }
+//            
+//        }
+//            dailyInfo.append(firstDay)
+////            print("*** THIS IS IN THE HIGH AND LOW FUNCTION ITS THE FIRST DAY \(firstDay)")
+//        }
+        
+        var temps = [Int]()
+       
         for temp in firstDay {
-            if maxTemp < temp.tempF {
-                maxTemp = temp.tempF
+            
+           temps.append(Int(temp.tempF)!)
+        
+
+        }
+        
+        let minTemps = temps.minElement()!
+        let maxTemps = temps.maxElement()!
+
+        print("this is min temps \(minTemps)")
+        print("this is max temps \(maxTemps)")
+        
+        for var i = 0; i < firstDay.count; i++ {
+            if firstDay[i].tempF == ("\(minTemps)") {
+                firstDay[i].hourlyLow = true
+            } else if firstDay[i].tempF == ("\(maxTemps)") {
+                firstDay[i].hourlyHigh = true
             }
         }
-        for temp in firstDay {
-            if minTemp > temp.tempF {
-                minTemp = temp.tempF
-            }
-        }
-            print(firstDay)
-            print("This is min Temp \(minTemp)")
-             print("This is max Temp \(maxTemp)")
+    
+//        print("this is the firstDay \(firstDay)")
+
+        
+        
+//                print("this is dailyInfo \(dailyInfo)")
+
+
+//        var maxTemp = firstDay[0].tempF
+//        var minTemp = firstDay[0].tempF
+//        for temp in firstDay {
+//            if maxTemp < temp.tempF {
+//                maxTemp = temp.tempF
+//            }
+//        }
+//        for temp in firstDay {
+//            if minTemp > temp.tempF {
+//                minTemp = temp.tempF
+//            }
+//        }
+//            print(firstDay)
+//            print("This is min Temp \(minTemp)")
+//             print("This is max Temp \(maxTemp)")
     
 //        let maxTemp = maxElement(firstDay.map{$0.tempF})
         
@@ -172,23 +241,30 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
 //        let maxTemp = maxElement()
         
 //        print("****vthis is the daily info \(dailyInfo[0])")
+        
+          appendInfo()
    
          self.collectionOutlet.reloadData()
         
     }
 
+
         
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         self.weatherService.delegate = self
-        
+      
         
     }
     
     
     override func viewWillAppear(animated: Bool) {
+        
+         openZipAlert()
+    
+        
         super.viewWillAppear(true)
         
         
@@ -256,9 +332,7 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
 //        cell.theTempLabel.text = self.firstDay[indexPath.row].tempF + "˚"
 //        print("this is the \(self.dailyInfo[indexPath.section][indexPath.row].hourlyTime)")
         
-            cell.theHourLabel.text = self.dailyInfo[indexPath.section][indexPath.row].hourlyTime
-            cell.theTempLabel.text = self.dailyInfo[indexPath.section][indexPath.row].tempF + "˚"
-    
+
 
         let iconString = dailyInfo[indexPath.section][indexPath.row].hourlyIcon
         let iconSubstring = iconString.componentsSeparatedByString("/k/")
@@ -269,15 +343,69 @@ class ViewController: UIViewController, WeatherServiceDelegate, UICollectionView
         
 //        let iconSubstring = iconString.substringWithRange(Range<String.Index>(start: iconString.startIndex.advancedBy(31), end: iconString.endIndex.advancedBy(-4)))
 //        print("this is the substring \(iconSubstring)")
-
-      let stringIconUrl = ("\(iconStringUsing.nrd_weatherIconURL()!)")
-        print(stringIconUrl)
         
-        cell.hourlyIcon.image = UIImage(data: NSData(contentsOfURL: NSURL(string: stringIconUrl)!)!)
 
         
+        cell.theHourLabel.text = self.dailyInfo[indexPath.section][indexPath.row].hourlyTime
+        cell.theTempLabel.text = self.dailyInfo[indexPath.section][indexPath.row].tempF + "˚"
         
-        cell.setNeedsDisplay()
+        var stringIconUrl = ""
+        
+        if self.dailyInfo[indexPath.section][indexPath.row].hourlyLow == true {
+            //            cell.backgroundColor = coolColor
+            stringIconUrl = ("\(iconStringUsing.nrd_weatherIconURL(highlighted: true)!)")
+            cell.hourlyIcon.image = UIImage(data: NSData(contentsOfURL: NSURL(string: stringIconUrl)!)!)
+            cell.theHourLabel.textColor = coolColor
+            cell.theTempLabel.textColor = coolColor
+            cell.hourlyIcon.image = cell.hourlyIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            cell.hourlyIcon.tintColor = coolColor
+//            self.dailyInfo[indexPath.section][indexPath.row].firstOccurence = true
+            for var i = 0; i < dailyInfo.count; i++ {
+                dailyInfo[0][i].hourlyLow = false
+            }
+//            cell.tintColor = coolColor
+//            self.collectionOutlet.tintColorDidChange()
+//            self.view.addSubview(cell)
+//            self.collectionOutlet.reloadData()
+//            super.viewDidLoad()
+        } else if self.dailyInfo[indexPath.section][indexPath.row].hourlyHigh == true {
+            //            cell.backgroundColor = warmColor
+            stringIconUrl = ("\(iconStringUsing.nrd_weatherIconURL(highlighted: true)!)")
+            cell.hourlyIcon.image = UIImage(data: NSData(contentsOfURL: NSURL(string: stringIconUrl)!)!)
+            print(stringIconUrl)
+            
+            cell.theTempLabel.textColor = warmColor
+            cell.theHourLabel.textColor = warmColor
+            cell.hourlyIcon.image = cell.hourlyIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            cell.hourlyIcon.tintColor = warmColor
+            
+            for var i = 0; i < dailyInfo.count; i++ {
+                dailyInfo[0][i].hourlyHigh = false
+            }
+
+            
+            //            cell.tintColor = UIColor.redColor()
+//            
+//            cell.hourlyIcon.tintColor = warmColor
+//            cell.theHourLabel.tintColor = warmColor
+//            cell.theTempLabel.textColor = UIColor.redColor()
+            //            cell.backgroundView?.tintColor = warmColor
+            //            cell.window?.tintColor = warmColor
+            //            cell.self.window?.tintColor = warmColor
+            //           self.viewWillAppear(true)
+//            self.collectionOutlet.tintColorDidChange()
+//            self.view.addSubview(cell)
+//            self.collectionOutlet.reloadData()
+            
+//            super.viewDidLoad()
+        } else {
+            stringIconUrl = ("\(iconStringUsing.nrd_weatherIconURL()!)")
+             cell.hourlyIcon.image = UIImage(data: NSData(contentsOfURL: NSURL(string: stringIconUrl)!)!)
+            cell.hourlyIcon.image = cell.hourlyIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            cell.hourlyIcon.tintColor = UIColor.blackColor()
+        }
+      
+       
        
         
         return cell
